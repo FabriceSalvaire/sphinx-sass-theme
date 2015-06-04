@@ -12,30 +12,6 @@
 
 //**************************************************************************************************
 
-.wy-menu-horiz
-
-    +clearfix
-
-    ul, li
-        display: inline-block
-
-    li:hover
-        background: rgba(255,255,255,.1)
-
-    li
-        &.divide-left
-            border-left: solid 1px hsl(0, 0%, 25%)
-        &.divide-right
-            border-right: solid 1px hsl(0, 0%, 25%)
-
-    a
-        height: $base-font-size * 2
-        display: inline-block
-        line-height: $base-font-size * 2
-        padding: 0 $base-font-size
-
-//**************************************************************************************************
-
 .wy-menu-vertical
 
     header, p.caption
@@ -212,7 +188,7 @@
         padding: 5px
         border-radius: 100%
 
-    > a, .wy-dropdown > a
+    > a
         color: $section-background-color
         font-size: 100%
         font-weight: bold
@@ -342,23 +318,6 @@
     height: 100%
     // max-width: 800px
     margin: auto
-
-//**************************************************************************************************
-
-.wy-body-mask
-    position: fixed
-    width: 100%
-    height: 100%
-    background: rgba(0,0,0,.2)
-    display: none
-    z-index: $z-index-modal - 1
-    &.on
-        display: block
-footer
-    color: $gray-light
-    p
-        margin-bottom: $base-line-height / 2
-
 //**************************************************************************************************
 
 .rst-footer-buttons
