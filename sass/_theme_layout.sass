@@ -318,6 +318,7 @@
     height: 100%
     // max-width: 800px
     margin: auto
+
 //**************************************************************************************************
 
 .rst-footer-buttons
@@ -340,56 +341,6 @@
     .context
         color: $text-medium
         font-size: 90%
-
-//**************************************************************************************************
-
-+media($tablet)
-
-    .wy-body-for-nav
-        background: $section-background-color
-
-    .wy-nav-top
-        display: block
-
-    .wy-nav-side
-        @if $nav-desktop-position == left
-            left: -$nav-desktop-width
-        @else
-            right: -$nav-desktop-width
-        &.shift
-            width: 85%
-            left: 0
-
-    .wy-nav-content-wrap
-        margin-left: 0
-        .wy-nav-content
-            padding: $gutter
-        &.shift
-            position: fixed
-            min-width: 100%
-            left: 85%
-            top: 0
-            height: 100%
-            overflow: hidden
-
-//**************************************************************************************************
-
-+media($desktop-wider)
-    // .wy-nav-content-wrap
-    //     background: rgba(0,0,0,.05)
-    .wy-nav-content
-        margin: 0
-        background: $section-background-color
-
-//**************************************************************************************************
-
-@media print
-
-    .rst-versions, footer, .wy-nav-side
-        display: none
-
-    .wy-nav-content-wrap
-        margin-left: 0
 
 //***************************************************************************************************
 //
