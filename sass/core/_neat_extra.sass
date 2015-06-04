@@ -1,3 +1,5 @@
+//**************************************************************************************************
+
 // Remove last element gutter
 =omega-type($query: block, $direction: default)
     $table: if(belongs-to(table, $query), true, false)
@@ -34,6 +36,8 @@
     @else
         @warn "Too many arguments passed to the omega() mixin."
 
+//**************************************************************************************************
+
 =nth-of-type($query, $direction)
     $opposite-direction: get-opposite-direction($direction)
     &:nth-of-type(#{$query})
@@ -41,3 +45,9 @@
     @if type-of($query) == number
         &:nth-of-type(#{$query}+1)
             clear: $opposite-direction
+
+//***************************************************************************************************
+//
+// End
+//
+//***************************************************************************************************
