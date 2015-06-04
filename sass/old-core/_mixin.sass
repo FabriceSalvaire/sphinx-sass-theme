@@ -1,6 +1,4 @@
-// -----------------
-// Mixins used as Extends. Since its just easier to type +mixin instead of @extend class
-// -----------------
+//**************************************************************************************************
 
 // font-smooth is used by alert
 
@@ -12,7 +10,8 @@
 =font-smooth
     @extend %font-smooth
 
-// OVERWRITES TO OUTSIDE LIBRARIES
+//**************************************************************************************************
+// Overwrites to outside libraries
 
 // Clearfix
 =clearfix
@@ -26,6 +25,8 @@
 
 .clearfix
     +clearfix
+
+//**************************************************************************************************
 
 // Since the typical default browser font-size is 16px, that makes the calculation for grid size.
 // If you want your base font-size to be a different size and not have it effect grid size too,
