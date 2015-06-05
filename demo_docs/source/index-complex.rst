@@ -18,7 +18,15 @@ Contents:
 
     demo
     list
+    bootstrap-theme-example
     short-page
+
+.. toctree::
+    :maxdepth: 2
+    :caption: This is an incredibly long caption for a long menu
+
+    long
+    api
 
 Maaaaath!
 =========
