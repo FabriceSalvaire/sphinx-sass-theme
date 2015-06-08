@@ -89,7 +89,7 @@ module.exports = function(grunt) {
     watch: {
       // Compile sass changes into theme directory
       sass: {
-        files: ['sass/*.sass', 'bower_components/**/*.sass'],
+        files: ['sass/*.sass', 'sass/**/*.sass', 'bower_components/**/*.sass'],
         tasks: ['sass:dev']
       },
       // Changes in theme dir rebuild sphinx
@@ -103,7 +103,7 @@ module.exports = function(grunt) {
         options: { livereload: true }
       }
     }
-
+    
   });
   
   grunt.loadNpmTasks('grunt-exec');
