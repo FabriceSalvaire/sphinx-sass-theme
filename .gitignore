@@ -7,7 +7,13 @@
 .coverage
 .ruby-version
 .tox
+activate
 bower_components/
 dist/
+example.html
+install.log
+mygrep
 node_modules/
 npm-debug.log
+sphinx_rtd_theme/static/css/theme.css
+sphinx_rtd_theme/static/css/theme.css.map
