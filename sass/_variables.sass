@@ -1,0 +1,124 @@
+//**************************************************************************************************
+// Colors
+
+$black:                  #000 !default
+$white:                  #fff !default
+
+$gray-base:              #000 !default
+$gray-darker:            lighten($gray-base, 13.5%) !default
+$gray-dark:              lighten($gray-base, 20.0%) !default
+$gray:                   lighten($gray-base, 33.5%) !default
+$gray-light:             lighten($gray-base, 46.7%) !default
+$gray-lighter:           lighten($gray-base, 93.5%) !default
+
+// $gray-darker:            lighten(#000, 16%)
+// $gray-dark:              lighten(#000, 33%)
+// $gray:                   lighten(#000, 50%)
+// $gray-light:             lighten(#000, 63%)
+// $gray-lighter:           lighten(#000, 83%)
+
+$brand-primary:          darken(#428bca, 6.5%) !default
+$brand-success:          #5cb85c !default
+$brand-info:             #5bc0de !default
+$brand-warning:          #f0ad4e !default
+$brand-danger:           #d9534f !default
+
+$blue:                   #2980B9
+$cobalt:                 #34495E
+$green:                  #27AE60
+$offgreen:               #1ABC9C
+$orange:                 #E67E22
+$purple:                 #9B59B6
+$red:                    #E74C3C
+$shell:                  #ECF0F1
+$yellow:                 #F1C40F
+
+//**************************************************************************************************
+// Scaffolding
+//   Settings for some of the most global styles.
+
+$body-background:             $white
+$text-color:                  $black
+
+// $text-invert:                           hsl(0,0%,100%) !default
+
+$text-code-color:             $red
+$text-code-background-color:  $white
+$text-code-border-color:      hsl(195,7%,89%)
+
+// $text-dark:                   lighten($text-color,15%) !default
+// $text-medium:                 lighten($text-color,25%) !default
+// $text-light:                  lighten($text-color,45%) !default
+// $text-lighter:                lighten($text-color,60%) !default
+
+$link-color:                  $blue
+$link-visited-color:          $purple
+$link-hover-color:            lighten($link-color, 6%)
+// $link-color-alt:              hsl(33, 100%, 51%)
+
+//**************************************************************************************************
+// Typography
+//   Font, line-height, and color for body text, headings, and more.
+
+$font-family-sans-serif:      "Lato", "proxima-nova", "Helvetica Neue", Arial, sans-serif !default
+// $font-family-serif:           Georgia, "Times New Roman", Times, serif !default
+// Default monospace fonts for `code>, <kbd>, and <pre>.
+$font-family-monospace:       Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace !default
+$font-family-base:            $font-family-sans-serif !default
+
+// $base-font-family-bold:       bold
+$font-family-custom:          "Roboto Slab", "ff-tisa-web-pro", "Georgia", Arial, sans-serif
+$font-family-icon:            "FontAwesome"
+
+$font-size-base:              16px !default
+$font-size-large:             ceil(($font-size-base * 1.25)) !default
+$font-size-small:             ceil(($font-size-base * 0.85)) !default
+
+//$font-size-h1:                floor(($font-size-base * 2.6)) !default
+//$font-size-h2:                floor(($font-size-base * 2.15)) !default
+//$font-size-h3:                ceil(($font-size-base * 1.7)) !default
+//$font-size-h4:                ceil(($font-size-base * 1.25)) !default
+//$font-size-h5:                $font-size-base !default
+//$font-size-h6:                ceil(($font-size-base * 0.85)) !default
+
+$font-size-h1:                175%
+$font-size-h2:                150%
+$font-size-h3:                125%
+$font-size-h4:                115%
+$font-size-h5:                110%
+$font-size-h6:                100%
+
+//** Unit-less `line-height` for use in components like buttons. // 20/14
+// $line-height-base:        1.428571429 !default
+//** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc. // ~20px
+// $line-height-computed:    floor(($font-size-base * $line-height-base)) !default
+
+$line-height-base:            24px
+
+//**************************************************************************************************
+// Rules
+
+$hr-border-color:             $black
+
+//***************************************************************************************************
+// Layout
+
+// Padding between columns. Gets divided in half for the left and right.
+// $grid-gutter-width:         30px !default;
+
+// cf. http://desktoppub.about.com/cs/pagelayout/g/gutter.htm
+// The gutter is the inside margins or blank space between two facing pages. The gutter space is
+// that extra space allowance used to accommodate the binding in books and magazines.
+// The blank space between two columns of text is the alley.
+// Gutter is sometimes used to refer to the alley or space between columns of text in a page layout.
+
+//$gutter: golden-ratio(1em, 1) !default
+$gutter: 1em
+
+$nav-width:                   300px
+
+//***************************************************************************************************
+//
+// End
+//
+//***************************************************************************************************

@@ -1,0 +1,54 @@
+//**************************************************************************************************
+//
+// Scaffolding
+//
+
+// Reset the box-sizing
+//   The width and height properties include the padding and border, but not the margin.
+//   https://developer.mozilla.org/en/docs/Web/CSS/box-sizing
+//
+// Heads up! This reset may cause conflicts with some third-party widgets.
+// For recommendations on resolving such conflicts, see
+//   http://getbootstrap.com/getting-started/#third-box-sizing
+*
+    @include box-sizing(border-box)
+*:before,
+*:after
+    @include box-sizing(border-box)
+
+// Body resets
+body
+    background-color: $body-background
+    color: $text-color
+    font-family: $font-family-base
+    font-size: $font-size-base
+    font-weight: normal
+    line-height: $line-height-base
+
+// Horizontal rules
+hr
+    border-top: 1px solid $hr-border-color
+    border: 0
+    display: block
+    height: 1px
+    margin: $line-height-base 0
+    padding: 0
+//  margin-top:    $line-height-computed;
+//  margin-bottom: $line-height-computed;
+
+// Links
+a
+    color: $link-color
+    cursor: pointer
+    text-decoration: none
+    &:hover
+        color: $link-hover-color
+        // text-decoration: $link-hover-decoration
+    &:visited
+        color: $link-visited-color
+
+//***************************************************************************************************
+//
+// End
+//
+//***************************************************************************************************
