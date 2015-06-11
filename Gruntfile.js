@@ -7,7 +7,72 @@ module.exports = function(grunt) {
     
     clean: {
       build: ["demo_docs/build"],
-      fonts: ["sphinx_rtd_theme/static/fonts"]
+      fonts: ["sphinx_theme/static/fonts"]
+    },
+    
+    // https://github.com/Modernizr/grunt-modernizr
+    // npm install grunt-modernizr --save-dev
+    modernizr: {
+      dist: {
+	// [REQUIRED] Path to the build you're using for development.
+	devFile: 'bower_components/modernizr/modernizr.js',
+	
+	// Path to save out the built file.
+	outputFile: 'sphinx_theme/static/js/modernizr.js',
+	
+        // Based on default settings on http://modernizr.com/download/
+        "extra" : {
+          "shiv" : true,
+          "printshiv" : false,
+          "load" : true,
+          "mq" : false,
+          "cssclasses" : true
+        },
+	
+        // Based on default settings on http://modernizr.com/download/
+        "extensibility" : {
+          "addtest" : false,
+          "prefixed" : false,
+          "teststyles" : false,
+          "testprops" : false,
+          "testallprops" : false,
+          "hasevents" : false,
+          "prefixes" : false,
+          "domprefixes" : false,
+          "cssclassprefix": ""
+        },
+	
+        // By default, source is uglified before saving
+        "uglify" : true,
+	
+        // Define any tests you want to implicitly include.
+        "tests" : [],
+	
+        // By default, this task will crawl your project for references to Modernizr tests.
+        // Set to false to disable.
+        "parseFiles" : true,
+	
+        // When parseFiles = true, this task will crawl all *.js, *.css, *.scss and *.sass files,
+        // except files that are in node_modules/.
+        // You can override this by defining a "files" array below.
+	"files" : {
+          "src": [
+	    'sphinx_theme/static/css/*.css',
+	    'sphinx_theme/static/js/*.css'
+	  ]
+        },
+	
+        // This handler will be passed an array of all the test names
+        // passed to the Modernizr API, and will run after the API
+        // call has returned
+        // "handler": function (tests) {},
+	
+        // When parseFiles = true, matchCommunityTests = true will attempt to match user-contributed tests.
+        "matchCommunityTests" : false,
+	
+        // Have custom Modernizr tests? Add paths to their location here.
+        "customTests" : []
+      }
     },
     
     copy: {
@@ -16,7 +81,7 @@ module.exports = function(grunt) {
 	  expand: true,
 	  flatten: true,
 	  src: ['bower_components/font-awesome/fonts/*'],
-	  dest: 'sphinx_rtd_theme/static/fonts/',
+	  dest: 'sphinx_theme/static/fonts/',
 	  filter: 'isFile'
 	}]
       }
@@ -37,7 +102,7 @@ module.exports = function(grunt) {
           expand: true,
           cwd: 'sass',
           src: ['*.sass'],
-          dest: 'sphinx_rtd_theme/static/css',
+          dest: 'sphinx_theme/static/css',
           ext: '.css'
         }]
       },
@@ -55,7 +120,7 @@ module.exports = function(grunt) {
           expand: true,
           cwd: 'sass',
           src: ['*.sass'],
-          dest: 'sphinx_rtd_theme/static/css',
+          dest: 'sphinx_theme/static/css',
           ext: '.css'
         }]
       }
@@ -94,7 +159,7 @@ module.exports = function(grunt) {
       },
       // Changes in theme dir rebuild sphinx
       sphinx: {
-        files: ['sphinx_rtd_theme/**/*', 'demo_docs/**/*.rst', 'demo_docs/**/*.py'],
+        files: ['sphinx_theme/**/*', 'demo_docs/**/*.rst', 'demo_docs/**/*.py'],
         tasks: ['clean:build', 'exec:build_sphinx']
       },
       // live-reload the demo_docs if sphinx re-builds
@@ -113,6 +178,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-open');
+  grunt.loadNpmTasks("grunt-modernizr");
   
   grunt.registerTask('fonts', [
     'clean:fonts',
@@ -122,6 +188,7 @@ module.exports = function(grunt) {
   grunt.registerTask('default', [
     // 'exec:bower_update',
     'clean:build',
+    // 'modernizr',
     'sass:dev',
     'exec:build_sphinx',
     'connect',
@@ -132,6 +199,7 @@ module.exports = function(grunt) {
   grunt.registerTask('build', [
     'exec:bower_update',
     'clean:build',
+    'modernizr',
     'sass:build',
     'exec:build_sphinx'
   ]);
