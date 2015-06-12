@@ -15,16 +15,16 @@
 .wy-menu-vertical
 
     header, p.caption
-        height: $base-font-size * 2
-        display: inline-block
-        line-height: $base-font-size * 2
-        padding: 0 $gutter
-        margin-bottom: 0
-        display: block
-        font-weight: bold
-        text-transform: uppercase
-        font-size: 80%
         color: $gray
+        display: block
+        display: inline-block
+        font-size: 80%
+        font-weight: bold
+        height: $base-font-size * 2
+        line-height: $base-font-size * 2
+        margin-bottom: 0
+        padding: 0 $gutter
+        text-transform: uppercase
         white-space: nowrap
 
     ul
@@ -44,8 +44,8 @@
                 &:hover
                     background: darken($section-background-color, 15%)
         code
-            border: none
             background: inherit
+            border: none
             color: inherit
             padding-left: 0
             padding-right: 0
@@ -56,21 +56,21 @@
             margin-left: -1.2em
             @extend .fa
             @extend .fa-plus-square-o
+            color: darken($text-medium, 20%)
             font-size: .8em
             line-height: 1.6em
-            color: darken($text-medium, 20%)
 
     // On state for the first level
     li.on a, li.current > a
-        color: $text-color
-        padding: $gutter / 4 $gutter
-        font-weight: bold
-        position: relative
         background: $section-background-color
-        border: none
         border-bottom: solid 1px darken($section-background-color, 20%)
         border-top: solid 1px darken($section-background-color, 20%)
+        border: none
+        color: $text-color
+        font-weight: bold
         padding-left: $gutter -4px
+        padding: $gutter / 4 $gutter
+        position: relative
         +font-smooth
         &:hover
             background: $section-background-color
@@ -79,10 +79,10 @@
         span.toctree-expand
             @extend .fa
             @extend .fa-minus-square-o
+            color: darken($text-medium, 30%)
             display: block
             font-size: .8em
             line-height: 1.6em
-            color: darken($text-medium, 30%)
 
     // This is the on state for pages beyond second level
     li.toctree-l1.current li.toctree-l2, li.toctree-l2.current li.toctree-l3
@@ -97,8 +97,8 @@
                 background: darken($section-background-color, 20%)
                 padding: $gutter / 4 $gutter * 1.5
             li.toctree-l3 > a
-                display: block
                 background: darken($section-background-color, 20%)
+                display: block
                 padding: $gutter / 4 $gutter * 2.5
         a:hover span.toctree-expand
             color: $text-medium
@@ -112,11 +112,11 @@
                 background: darken($section-background-color, 25%)
                 padding: $gutter / 4 $gutter * 2.5
             li.toctree-l4 > a
-                display: block
                 background: darken($section-background-color, 25%)
-                padding: $gutter / 4 $gutter * 3.5
-                border-top: none
                 border-bottom: none
+                border-top: none
+                display: block
+                padding: $gutter / 4 $gutter * 3.5
         a:hover span.toctree-expand
             color: $text-medium
         span.toctree-expand
@@ -137,18 +137,18 @@
             display: block
 
     li ul li a
-        margin-bottom: 0
         color: $text-light
         font-weight: normal
+        margin-bottom: 0
 
     a
+        color: $text-light
+        // display: block
         display: inline-block
+        font-size: 90%
         line-height: 18px
         padding: $gutter / 4 $gutter
-        display: block
         position: relative
-        font-size: 90%
-        color: $text-light
         &:hover
             background-color: lighten($menu-background-color, 10%)
             cursor: pointer
@@ -156,8 +156,8 @@
                 color: $text-light
         &:active
             background-color: $menu-logo-color
-            cursor: pointer
             color: $white
+            cursor: pointer
             span.toctree-expand
                 color: $white
 
@@ -165,47 +165,47 @@
 
 .wy-side-nav-search
 
-    z-index: $z-index-popover
     background-color: $link-color
-    text-align: center
-    padding: $gutter / 2
-    display: block
     color: $section-background-color
+    display: block
     margin-bottom: $gutter / 2
+    padding: $gutter / 2
+    text-align: center
+    z-index: $z-index-popover
 
     input[type=text]
-        width: 100%
+        border-color: darken($link-color, 5%)
         border-radius: 50px
         padding: 6px 12px
-        border-color: darken($link-color, 5%)
+        width: 100%
 
     img
-        display: block
-        margin: auto auto $gutter / 2 auto
-        height: 45px
-        width: 45px
         background-color: $menu-logo-color
-        padding: 5px
         border-radius: 100%
+        display: block
+        height: 45px
+        margin: auto auto $gutter / 2 auto
+        padding: 5px
+        width: 45px
 
     > a
         color: $section-background-color
+        display: inline-block
         font-size: 100%
         font-weight: bold
-        display: inline-block
-        padding: $base-line-height / 6 $base-line-height / 4
         margin-bottom: $gutter / 2
+        padding: $base-line-height / 6 $base-line-height / 4
         +font-smooth
         &:hover
             background: rgba(255,255,255,.1)
         img.logo
-            display: block    // display on its own line all the time
-            margin: 0 auto
-            height: auto    // undo badge styling above
-            width: auto
-            border-radius: 0
-            max-width: 100%    // shrink on mobile, if appropriate
             background: rgba(0,0,0,0)    // make hover background of parent show up properly
+            border-radius: 0
+            display: block    // display on its own line all the time
+            height: auto    // undo badge styling above
+            margin: 0 auto
+            max-width: 100%    // shrink on mobile, if appropriate
+            width: auto
         &.icon
             img.logo
                 margin-top: 0.85em    // space it away from the title text
@@ -227,22 +227,22 @@
 
 [data-menu-wrap]
     +transition(all .2s ease-in)
-    position: absolute
-    opacity: 1
-    width: 100%
     opacity: 0
+    opacity: 1
+    position: absolute
+    width: 100%
     &.move-center
         left: 0
-        right: auto
         opacity: 1
-    &.move-left
         right: auto
+    &.move-left
         left: -100%
         opacity: 0
+        right: auto
     &.move-right
-        right: -100%
         left: auto
         opacity: 0
+        right: -100%
 
 //**************************************************************************************************
 
@@ -254,36 +254,36 @@
 //**************************************************************************************************
 
 .wy-grid-for-nav
+    height: 100%
     position: absolute
     width: 100%
-    height: 100%
 
 //**************************************************************************************************
 
 .wy-nav-side
-    position: fixed
-    top: 0
+    background: $menu-background-color
     bottom: 0
     left: 0
-    padding-bottom: 2em
-    width: $nav-desktop-width
+    min-height: 100%
     overflow-x: hidden
     overflow-y: scroll
-    min-height: 100%
-    background: $menu-background-color
+    padding-bottom: 2em
+    position: fixed
+    top: 0
+    width: $nav-desktop-width
     z-index: $z-index-popover
 
 //**************************************************************************************************
 
 .wy-nav-top
-    display: none
     background: $link-color
     color: $white
+    display: none
+    font-size: 100%
+    line-height: 50px
     padding: $gutter / 4 $gutter / 2
     position: relative
-    line-height: 50px
     text-align: center
-    font-size: 100%
     +clearfix
 
     a
@@ -292,32 +292,32 @@
         +font-smooth
 
     img
-        margin-right: $base-line-height / 2
-        height: 45px
-        width: 45px
         background-color: $menu-logo-color
-        padding: 5px
         border-radius: 100%
+        height: 45px
+        margin-right: $base-line-height / 2
+        padding: 5px
+        width: 45px
 
     i
-        font-size: 30px
-        float: left
         cursor: pointer
+        float: left
+        font-size: 30px
 
 //**************************************************************************************************
 
 .wy-nav-content-wrap
-    margin-left: $nav-desktop-width
     background: $section-background-color
+    margin-left: $nav-desktop-width
     min-height: 100%
 
 //**************************************************************************************************
 
 .wy-nav-content
-    padding: $gutter $gutter * 2
     height: 100%
-    // max-width: 800px
     margin: auto
+    // max-width: 800px
+    padding: $gutter $gutter * 2
 
 //**************************************************************************************************
 
@@ -328,16 +328,16 @@
 
 #search-results
     .search li
-        margin-bottom: $base-line-height
         border-bottom: solid 1px $table_border_color
+        margin-bottom: $base-line-height
         padding-bottom: $base-line-height
     .search li:first-child
         border-top: solid 1px $table_border_color
         padding-top: $base-line-height
     .search li a
+        display: inline-block
         font-size: 120%
         margin-bottom: $base-line-height / 2
-        display: inline-block
     .context
         color: $text-medium
         font-size: 90%
