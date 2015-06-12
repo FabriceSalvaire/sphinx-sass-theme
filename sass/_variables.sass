@@ -47,8 +47,8 @@ $text-code-background-color:  $white
 $text-code-border-color:      hsl(195,7%,89%)
 
 // $text-dark:                   lighten($text-color,15%) !default
-// $text-medium:                 lighten($text-color,25%) !default
-// $text-light:                  lighten($text-color,45%) !default
+$text-medium:                 lighten($text-color,25%) !default
+$text-light:                  lighten($text-color,45%) !default
 // $text-lighter:                lighten($text-color,60%) !default
 
 $link-color:                  $blue
@@ -93,6 +93,7 @@ $font-size-h6:                100%
 //** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc. // ~20px
 // $line-height-computed:    floor(($font-size-base * $line-height-base)) !default
 
+// or base-line-height
 $line-height-base:            24px
 
 //**************************************************************************************************
@@ -116,6 +117,57 @@ $hr-border-color:             $black
 $gutter: 1em
 
 $nav-width:                   300px
+
+//**************************************************************************************************
+// Uses Font Awesome 4.0
+
+$font-awesome-dir:            "../font/"
+$icon-prefix:                 "fa"
+
+// $icon-close:                          "times"
+// $icon-arrow-left:                     "arrow-left"
+// $icon-arrow-right:                    "arrow-right"
+// $icon-arrow-down:                     "arrow-down"
+// $icon-arrow-up:                       "arrow-up"
+// $icon-expand:                         "expand"
+// $icon-compress:                       "compress"
+// $icon-trash:                          "trash-o"
+// $icon-table:                          "table"
+// $icon-link:                           "link"
+// $icon-quote-right:                    "quote-right"
+// $icon-align-left:                     "align-left"
+// $icon-align-right:                    "align-right"
+// $icon-align-justify:                  "align-justify"
+// $icon-align-center:                   "align-center"
+// $icon-arrows-alt:                     "arrows-alt"
+// $icon-picture:                        "picture-o"
+// $icon-youtube:                        "youtube-play"
+// $icon-code:                           "code"
+// $icon-text-height:                    "text-height"
+// $icon-bold:                           "bold"
+// $icon-italic:                         "italic"
+// $icon-strikethrough:                  "strikethrough"
+// $icon-list-ul:                        "list-ul"
+// $icon-list-ol:                        "list-ol"
+// $icon-outdent:                        "outdent"
+// $icon-indent:                         "indent"
+// $icon-paperclip:                      "paperclip"
+// $icon-caret-down:                     "caret-down"
+// $icon-ok:                             "check-circle"
+// $icon-remove:                         "times-circle"
+// $icon-alert:                          "exclamation-circle"
+
+//**************************************************************************************************
+// Forms
+
+$input-border-color:          #ccc !default
+$input-shadow-color:          #ddd !default
+
+//**************************************************************************************************
+
+$menu-logo-color:             $link-color
+$menu-background-color:       rgb(52, 49, 49)
+$section-background-color:    #fff
 
 //***************************************************************************************************
 //

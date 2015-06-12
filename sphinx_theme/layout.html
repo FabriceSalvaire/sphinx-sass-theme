@@ -65,7 +65,7 @@
         {% include "searchbox.html" %}
       {% endblock %}
     </div>
-    <div class="nav-toc" role="navigation" aria-label="main navigation">
+    <div class="nav-toc" data-spy="affix" role="navigation" aria-label="main navigation">
       {% block menu %}
         {% set toctree = toctree(maxdepth=4, collapse=False, includehidden=True) %}
         {% if toctree %}

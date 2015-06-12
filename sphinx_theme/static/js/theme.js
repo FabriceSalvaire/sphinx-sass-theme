@@ -7,34 +7,28 @@ function toggleCurrent (elem) {
 }
 
 $(document).ready(function() {
-  // Shift nav in mobile when clicking the menu.
-  $(document).on('click', "[data-toggle='wy-nav-top']", function() {
-    $("[data-toggle='wy-nav-shift']").toggleClass("shift");
-    $("[data-toggle='rst-versions']").toggleClass("shift");
-  });
-
   // Nav menu link click operations
-  $(document).on('click', ".wy-menu-vertical .current ul li a", function() {
+  $(document).on('click', ".nav-toc .current ul li a", function() {
     var target = $(this);
     // Close menu when you click a link.
-    $("[data-toggle='wy-nav-shift']").removeClass("shift");
-    $("[data-toggle='rst-versions']").toggleClass("shift");
+    //// $("[data-toggle='nav-shift']").removeClass("shift");
+    //// $("[data-toggle='rst-versions']").toggleClass("shift");
     // Handle dynamic display of l3 and l4 nav lists
     toggleCurrent(target);
-    if (typeof(window.SphinxRtdTheme) != 'undefined') {
-      window.SphinxRtdTheme.StickyNav.hashChange();
+    if (typeof(window.SphinxTheme) != 'undefined') {
+      window.SphinxTheme.sticky_nav.hash_change();
     }
   });
 
-  $(document).on('click', "[data-toggle='rst-current-version']", function() {
-    $("[data-toggle='rst-versions']").toggleClass("shift-up");
-  });
+  //// $(document).on('click', "[data-toggle='rst-current-version']", function() {
+  ////   $("[data-toggle='rst-versions']").toggleClass("shift-up");
+  //// });
 
   // Make tables responsive
-  $("table.docutils:not(.field-list)").wrap("<div class='wy-table-responsive'></div>");
+  //// $("table.docutils:not(.field-list)").wrap("<div class='table-responsive'></div>");
 
   // Add expand links to all parents of nested ul
-  $('.wy-menu-vertical ul').siblings('a').each(function () {
+  $('.nav-toc ul').siblings('a').each(function () {
     var link = $(this);
     expand = $('<span class="toctree-expand"></span>');
     expand.on('click', function (ev) {
@@ -47,13 +41,13 @@ $(document).ready(function() {
 });
 
 // Sphinx theme state
-window.SphinxRtdTheme = (function (jquery) {
-  var stickyNav = (function () {
-    var navBar,
+window.SphinxTheme = (function (jquery) {
+  var sticky_nav = (function () {
+    var nav_bar,
         win,
-        winScroll = false,
-        linkScroll = false,
-        winPosition = 0,
+        win_scroll = false,
+        link_scroll = false,
+        win_position = 0,
 
         enable = function () {
           init();
@@ -62,25 +56,25 @@ window.SphinxRtdTheme = (function (jquery) {
 
           // Set scrolling
           win.on('scroll', function () {
-            if (!linkScroll) {
-              winScroll = true;
+            if (!link_scroll) {
+              win_scroll = true;
             }
           });
 
           setInterval(function () {
-            if (winScroll) {
-              winScroll = false;
-              var newWinPosition = win.scrollTop(),
-                  navPosition = navBar.scrollTop(),
-                  newNavPosition = navPosition + (newWinPosition - winPosition);
-              navBar.scrollTop(newNavPosition);
-              winPosition = newWinPosition;
+            if (win_scroll) {
+              win_scroll = false;
+              var new_win_position = win.scrollTop(),
+                  nav_position = nav_bar.scrollTop(),
+                  new_nav_position = nav_position + (new_win_position - win_position);
+              nav_bar.scrollTop(new_nav_position);
+              win_position = new_win_position;
             }
           }, 25);
         },
 
         init = function () {
-          navBar = jquery('nav.wy-nav-side:first');
+          nav_bar = jquery('nav.nav-side:first');
           win = jquery(window);
         },
 
@@ -89,8 +83,8 @@ window.SphinxRtdTheme = (function (jquery) {
           var anchor = encodeURI(window.location.hash);
           if (anchor) {
             try {
-              var link = $('.wy-menu-vertical').find('[href="' + anchor + '"]');
-              $('.wy-menu-vertical li.toctree-l1 li.current').removeClass('current');
+              var link = $('.nav-toc').find('[href="' + anchor + '"]');
+              $('.nav-toc li.toctree-l1 li.current').removeClass('current');
               link.closest('li.toctree-l2').addClass('current');
               link.closest('li.toctree-l3').addClass('current');
               link.closest('li.toctree-l4').addClass('current');
@@ -101,10 +95,10 @@ window.SphinxRtdTheme = (function (jquery) {
           }
         },
 
-        hashChange = function () {
-          linkScroll = true;
+        hash_change = function () {
+          link_scroll = true;
           win.one('hashchange', function () {
-            linkScroll = false;
+            link_scroll = false;
           });
         };
 
@@ -112,11 +106,11 @@ window.SphinxRtdTheme = (function (jquery) {
 
     return {
       enable: enable,
-      hashChange: hashChange
+      hash_change: hash_change
     };
   }());
 
   return {
-    StickyNav: stickyNav
+    sticky_nav: sticky_nav
   };
 }($));

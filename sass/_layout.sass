@@ -1,65 +1,173 @@
 //**************************************************************************************************
 
 nav.nav-side
-    position: fixed
-    top: 0px
+    background: $menu-background-color
     left: 0px
-    width: $nav-width
     min-height: 100%
     overflow-x: hidden
     overflow-y: scroll
-    background: #343131
+    position: fixed
+    top: 0px
+    width: $nav-width
 
 //**************************************************************************************************
 
 .nav-toc
-    color: #404040
-
     ul
-        margin: 0px
-        padding: 0px
-        list-style: outside none none
+        margin-bottom: 0
 
-    li.current
-        background: #E3E3E3
+    li
+        &.divide-top
+            border-top: solid 1px hsl(0, 0%, 25%)
+        &.divide-bottom
+            border-bottom: solid 1px hsl(0, 0%, 25%)
+        &.current
+            background: darken($section-background-color, 10%)
+            a
+                color: $text-medium
+                border-right: solid 1px darken($section-background-color, 20%)
+                padding: $gutter / 4 $gutter * 1.5
+                &:hover
+                    background: darken($section-background-color, 15%)
+        // Expand links
+        span.toctree-expand
+            display: block
+            float: left
+            margin-left: -1.2em
+            @extend .fa
+            @extend .fa-plus-square-o
+            color: darken($text-medium, 20%)
+            font-size: .8em
+            line-height: 1.6em
+
+    // On state for the first level
+    li.on a, li.current > a
+        background: $section-background-color
+        border-bottom: solid 1px darken($section-background-color, 20%)
+        border-top: solid 1px darken($section-background-color, 20%)
+        border: none
+        color: $text-color
+        font-weight: bold
+        padding-left: $gutter -4px
+        padding: $gutter / 4 $gutter
+        position: relative
+        // +font-smooth
+        &:hover
+            background: $section-background-color
+            span.toctree-expand
+                color: $text-medium
+        span.toctree-expand
+            @extend .fa
+            @extend .fa-minus-square-o
+            color: darken($text-medium, 30%)
+            display: block
+            font-size: .8em
+            line-height: 1.6em
+
+    // This is the on state for pages beyond second level
+    li.toctree-l1.current li.toctree-l2, li.toctree-l2.current li.toctree-l3
+        > ul
+            display: none
+        &.current > ul
+            display: block
+
+    li.toctree-l2
+        &.current
+            > a
+                background: darken($section-background-color, 20%)
+                padding: $gutter / 4 $gutter * 1.5
+            li.toctree-l3 > a
+                background: darken($section-background-color, 20%)
+                display: block
+                padding: $gutter / 4 $gutter * 2.5
+        a:hover span.toctree-expand
+            color: $text-medium
+        span.toctree-expand
+            color: darken($section-background-color, 35%)
+
+    li.toctree-l3
+        font-size: .9em
+        &.current
+            > a
+                background: darken($section-background-color, 25%)
+                padding: $gutter / 4 $gutter * 2.5
+            li.toctree-l4 > a
+                background: darken($section-background-color, 25%)
+                border-bottom: none
+                border-top: none
+                display: block
+                padding: $gutter / 4 $gutter * 3.5
+        a:hover span.toctree-expand
+            color: $text-medium
+        span.toctree-expand
+            color: darken($section-background-color, 40%)
+
+    li.toctree-l4
+        font-size: .9em
+
+    li.current ul
+        display: block
+
+    li ul
+        margin-bottom: 0
+        display: none
+
+    .local-toc
+        li ul
+            display: block
+
+    li ul li a
+        color: $text-light
+        font-weight: normal
+        margin-bottom: 0
 
     a
-        line-height: 18px
-        padding: 0.4045em 1.618em
+        // font-weight: bold
+        color: $text-light
         display: block
-        position: relative
         font-size: 90%
-        color: #B3B3B3
-        text-text-decoration: none
+        margin-bottom: 0.809em
+        padding: $gutter / 4 $gutter
+        position: relative
+        text-decoration: none
         &:hover
-            background-color: #4E4A4A
+            background: lighten($menu-background-color, 10%)
+            span.toctree-expand
+                color: $text-light
+        &:active
+            background-color: $menu-logo-color
+            color: $white
+            cursor: pointer
+            span.toctree-expand
+                color: $white
 
 //**************************************************************************************************
 
 .nav-side-search
-    padding: .809em
-    background-color: #2980B9
+    background-color: $link-color
+    color: $section-background-color
+    margin-bottom: $gutter / 2
+    padding: $gutter / 2
     text-align: center
 
     > a
+        color: $section-background-color
         display: inline-block
-        padding: 4px 6px
-        margin-bottom: 0.809em
-        color: #FCFCFC
         font-size: 100%
         font-weight: bold
+        margin-bottom: $gutter / 2
+        padding: $line-height-base / 6 $line-height-base / 4
         text-decoration: none
         &:hover
             background: rgba(255, 255, 255, .1)
 
-    form
-        input[type="text"]
-            padding: 6px 12px
-            border: 1px solid #CCC
-            border-radius: 50px
-            border-color: #2472A4
-            box-shadow: 0px 1px 3px #DDD inset
-            font-size: 80%
+    input[type="text"]
+        border-color: darken($link-color, 5%)
+        border-radius: 50px
+        border: 1px solid $input-border-color
+        box-shadow: inset 0 1px 3px $input-shadow-color
+        font-size: 80%
+        padding: $line-height-base / 4
 
 //***************************************************************************************************
 //
