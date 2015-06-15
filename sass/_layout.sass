@@ -2,6 +2,7 @@
 
 nav.nav-side
     background: $menu-background-color
+    bottom: 0px
     left: 0px
     min-height: 100%
     overflow-x: hidden
@@ -12,6 +13,14 @@ nav.nav-side
     z-index: 200
 
 //**************************************************************************************************
+
+// hide inner levels
+// add an expand icon before title up to l3
+// on hover: box highlight
+// current section:
+//   use lighter background color
+//   show next level
+//   use darker color for current section from l1 to li
 
 .nav-toc
 
@@ -120,15 +129,15 @@ nav.nav-side
         span.toctree-expand
             color: darken($section-background-color, 40%)
 
-    // fourth level
+    // Fourth level
     li.toctree-l4
         font-size: .9em
 
-    // show inner levels of the current section
+    // Show inner levels of the current section
     li.current ul
         display: block
 
-    // hide inner levels
+    // Hide inner levels
     li ul
         margin-bottom: 0
         display: none
