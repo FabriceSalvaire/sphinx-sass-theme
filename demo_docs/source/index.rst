@@ -1,5 +1,6 @@
-.. include:: demo.rst
+.. include:: index-orig.rst
 
 .. End
-  .. include:: basic-page.rst
-
+  index-complex.rst
+  basic-page.rst
+  demo.rst
