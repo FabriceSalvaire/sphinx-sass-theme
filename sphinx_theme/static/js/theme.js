@@ -1,4 +1,5 @@
 function toggle_current (elem) {
+  console.log("toggle_current", elem);
   var parent_li = elem.closest('li');
   parent_li.siblings('li.current').removeClass('current');
   parent_li.siblings().find('li.current').removeClass('current');
@@ -7,6 +8,7 @@ function toggle_current (elem) {
 }
 
 $(document).ready(function() {
+  console.log("ready");
   // Nav menu link click operations
   $(document).on('click', ".nav-toc .current ul li a", function() {
     var target = $(this);
@@ -16,6 +18,7 @@ $(document).ready(function() {
     // Handle dynamic display of l3 and l4 nav lists
     toggle_current(target);
     if (typeof(window.SphinxTheme) != 'undefined') {
+      console.log("SphinxTheme defined");
       window.SphinxTheme.sticky_nav.hash_change();
     }
   });
@@ -32,6 +35,7 @@ $(document).ready(function() {
     var link = $(this);
     expand = $('<span class="toctree-expand"></span>');
     expand.on('click', function (ev) {
+      console.log("ready click");
       toggle_current(link);
       ev.stopPropagation();
       return false;
@@ -42,7 +46,9 @@ $(document).ready(function() {
 
 // Sphinx theme state
 window.SphinxTheme = (function (jquery) {
+  console.log("SphinxTheme");
   var sticky_nav = (function () {
+    console.log("sticky_nav");
     var nav_bar,
         win,
         win_scroll = false,
@@ -50,18 +56,21 @@ window.SphinxTheme = (function (jquery) {
         win_position = 0,
 
         enable = function () {
+	  console.log("sticky_nav enable");
           init();
           reset();
           win.on('hashchange', reset);
 
           // Set scrolling
           win.on('scroll', function () {
+	    console.log("sticky_nav scroll");
             if (!link_scroll) {
               win_scroll = true;
             }
           });
 
           setInterval(function () {
+	    console.log("sticky_nav setInterval");
             if (win_scroll) {
               win_scroll = false;
               var new_win_position = win.scrollTop(),
@@ -74,11 +83,13 @@ window.SphinxTheme = (function (jquery) {
         },
 
         init = function () {
+	  console.log("sticky_nav init");
           nav_bar = jquery('nav.nav-side:first');
           win = jquery(window);
         },
 
         reset = function () {
+	  console.log("sticky_nav reset");
           // Get anchor from URL and open up nested nav
           var anchor = encodeURI(window.location.hash);
           if (anchor) {
@@ -96,8 +107,10 @@ window.SphinxTheme = (function (jquery) {
         },
 
         hash_change = function () {
+	  console.log("sticky_nav hash_change");
           link_scroll = true;
           win.one('hashchange', function () {
+	    console.log("sticky_nav hash_change one");
             link_scroll = false;
           });
         };
