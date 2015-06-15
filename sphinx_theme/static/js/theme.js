@@ -1,4 +1,4 @@
-function toggleCurrent (elem) {
+function toggle_current (elem) {
   var parent_li = elem.closest('li');
   parent_li.siblings('li.current').removeClass('current');
   parent_li.siblings().find('li.current').removeClass('current');
@@ -14,7 +14,7 @@ $(document).ready(function() {
     //// $("[data-toggle='nav-shift']").removeClass("shift");
     //// $("[data-toggle='rst-versions']").toggleClass("shift");
     // Handle dynamic display of l3 and l4 nav lists
-    toggleCurrent(target);
+    toggle_current(target);
     if (typeof(window.SphinxTheme) != 'undefined') {
       window.SphinxTheme.sticky_nav.hash_change();
     }
@@ -32,7 +32,7 @@ $(document).ready(function() {
     var link = $(this);
     expand = $('<span class="toctree-expand"></span>');
     expand.on('click', function (ev) {
-      toggleCurrent(link);
+      toggle_current(link);
       ev.stopPropagation();
       return false;
     });
