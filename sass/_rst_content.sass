@@ -1,5 +1,10 @@
 //**************************************************************************************************
 
+span[id*='MathJax-Span']
+    color: $text-color
+
+//**************************************************************************************************
+
 %plain-list-disc
     line-height: $line-height-base
     list-style: disc
@@ -133,6 +138,17 @@
 
 .alert p:last-child
     margin-bottom: 0
+
+//**************************************************************************************************
+
+.table-responsive
+    margin-bottom: $line-height-base
+    max-width: 100%
+    overflow: auto
+    table
+        margin-bottom: 0 !important
+        td, th
+            white-space: nowrap
 
 //**************************************************************************************************
 

@@ -28,7 +28,7 @@ $(document).ready(function() {
   //// });
 
   // Make tables responsive
-  //// $("table.docutils:not(.field-list)").wrap("<div class='table-responsive'></div>");
+  $("table.docutils:not(.field-list)").wrap("<div class='table-responsive'></div>");
 
   // Add expand links to all parents of nested ul
   $('.nav-toc ul').siblings('a').each(function () {
