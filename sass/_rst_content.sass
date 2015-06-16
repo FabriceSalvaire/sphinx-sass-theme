@@ -1,3 +1,14 @@
+// vertical space: http://localhost:1919/list.html#a-list
+// table: http://localhost:1919/list.html#second-list-level
+
+//**************************************************************************************************
+
+.float-left
+    float: left
+
+.float-right
+    float: right
+
 //**************************************************************************************************
 
 span[id*='MathJax-Span']
@@ -73,12 +84,6 @@ span[id*='MathJax-Span']
     &:last-child
         margin-bottom: 0
 
-//.table .table-cell-min
-//    width: 1%
-//    padding-right: 0
-//    input[type=checkbox], input[type=checkbox]
-//        margin: 0
-
 .table-odd td, .table-striped tr:nth-child(2n-1) td
     background-color: $table-stripe-color
 
@@ -89,6 +94,15 @@ span[id*='MathJax-Span']
         border-left: 1px solid $table-border-color
     tbody > tr:last-child td
         border-bottom-width: 0
+
+.table-responsive
+    margin-bottom: $line-height-base
+    max-width: 100%
+    overflow: auto
+    table
+        margin-bottom: 0 !important
+        td, th
+            white-space: nowrap
 
 //**************************************************************************************************
 
@@ -141,28 +155,13 @@ span[id*='MathJax-Span']
 
 //**************************************************************************************************
 
-.table-responsive
-    margin-bottom: $line-height-base
-    max-width: 100%
-    overflow: auto
-    table
-        margin-bottom: 0 !important
-        td, th
-            white-space: nowrap
-
-//**************************************************************************************************
-
 section.rst-content
     margin-left: $nav-width
     padding: $gutter $gutter * 2
 
     //****************************************************************
-
-    p
-        margin-bottom: $line-height-base
-
-    //****************************************************************
     // figure alignment
+
     .align-right
         float: right
         margin: 0px 0px $line-height-base $line-height-base
@@ -174,6 +173,11 @@ section.rst-content
     .align-center
         margin: auto
         display: block
+
+    //****************************************************************
+
+    p
+        margin-bottom: $line-height-base
 
     //****************************************************************
     // Permalink
@@ -350,10 +354,7 @@ section.rst-content
     //     vertical-align: super
     //     font-size: 60%
 
-//**************************************************************************************************
-//**************************************************************************************************
-
-section.rst-content
+    //****************************************************************
 
     // For the most part, its safe to assume that sphinx wants you to use a blockquote as an indent. It gets
     // used in many different ways, so don't assume you can apply some fancy style, just leave it be.
@@ -369,8 +370,12 @@ section.rst-content
     .line-block
         margin-left: $line-height-base
 
+    //****************************************************************
+
     .toc-backref
         color: $text-color
+
+    //****************************************************************
 
     // Sidebar content. You'll see at the bottom of this file I change it in mobile.
     .sidebar
@@ -396,6 +401,8 @@ section.rst-content
             margin-bottom: $line-height-base
             font-size: 100%
 
+    //****************************************************************
+
     // Sphinx can highlight searched text with ?highlighted=searchterm
     .highlighted
         background: $yellow
@@ -403,10 +410,14 @@ section.rst-content
         font-weight: bold
         padding: 0 $line-height-base / 4
 
+    //****************************************************************
+
     // These are the little citation links [1] that show up within paragraphs.
     .footnote-reference, .citation-reference
         vertical-align: super
         font-size: 90%
+
+    //****************************************************************
 
     // Tables! Sphinx LOVES TABLES. Most of wyrm assumes you're only going to use a table as a table
     // so I have to write a bunch of unique stuff for Sphinx to style them up differently like it's 2003.
@@ -447,6 +458,8 @@ section.rst-content
             text-align: left
             padding-left: 0
 
+    //****************************************************************
+
     // These are the "literals" that get spit out when you mark stuff as ``code`` as your write.
     code
         @extend code
@@ -457,9 +470,13 @@ section.rst-content
         .xref, a &
             font-weight: bold
 
+    //****************************************************************
+
     // If the literal is inside an a tag, let's color it like a link
     a code
         color: $link-color
+
+    //****************************************************************
 
     // Doc links to sourcecode
     .viewcode-link, .viewcode-back
@@ -470,11 +487,14 @@ section.rst-content
     .viewcode-back
         display: block
         float: right
+
     p.rubric
         margin-bottom: 12px
         font-weight: bold
 
-    //Download link
+    //****************************************************************
+
+    // Download link
     code.download
         background: inherit
         padding: inherit
