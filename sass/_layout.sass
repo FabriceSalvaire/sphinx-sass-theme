@@ -10,7 +10,6 @@ nav.nav-side
     position: fixed
     top: 0px
     width: $nav-width
-    z-index: 200
 
 //**************************************************************************************************
 
@@ -56,14 +55,14 @@ nav.nav-side
                     background: darken($section-background-color, 15%)
         // Expand icon
         span.toctree-expand
-            display: block
-            float: left
-            margin-left: -1.2em
             @extend .fa
             @extend .fa-plus-square-o
             color: darken($text-medium, 20%)
+            display: block
+            float: left
             font-size: .8em
             line-height: 1.6em
+            margin-left: -1.2em
 
     // On state for the first level
     li.on a, li.current > a
@@ -75,7 +74,6 @@ nav.nav-side
         font-weight: bold
         padding: $gutter / 4 $gutter
         padding-left: $gutter -4px
-        position: relative
         // +font-smooth
         &:hover
             background: $section-background-color
@@ -157,16 +155,13 @@ nav.nav-side
         font-size: 90%
         line-height: 18px
         padding: $gutter / 4   $gutter
-        position: relative
         &:hover
             background-color: lighten($menu-background-color, 10%)
-            cursor: pointer
             span.toctree-expand
                 color: $text-light
         &:active
             background-color: $menu-logo-color
             color: $white
-            cursor: pointer
             span.toctree-expand
                 color: $white
 
