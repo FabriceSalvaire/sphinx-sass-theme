@@ -1,37 +1,37 @@
 //**************************************************************************************************
 
 .codeblock-example
+    background: $white
     border: 1px solid $table-border-color
     border-bottom: none
-    padding: $base-line-height
-    padding-top: $base-line-height * 2
     font-weight: 500
-    background: $white
+    padding: $line-height-base
+    padding-top: $line-height-base * 2
     position: relative
     &:after
-        content: "Example"
-        position: absolute
-        top: 0px
-        left: 0px
         background: $purple
         color: lighten(purple, 80%)
-        padding: $base-line-height / 4 $base-line-height / 2
+        content: "Example"
+        left: 0px
+        padding: $line-height-base / 4 $line-height-base / 2
+        position: absolute
+        top: 0px
     &.prettyprint-example-only
         border: 1px solid $table-border-color
-        margin-bottom: $base-line-height
+        margin-bottom: $line-height-base
 
 //**************************************************************************************************
 
 .codeblock, div[class^='highlight']
-    border: 1px solid $table-border-color
-    padding: 0px
-    overflow-x: auto
     background: $white
+    border: 1px solid $table-border-color
     // 1px hack otherwise border won't show. lame
-    margin: 1px 0 $base-line-height 0
+    margin: 1px 0 $line-height-base 0
+    overflow-x: auto
+    padding: 0px
     div[class^='highlight']
-        border: none
         background: none
+        border: none
         margin: 0
 
 // Needs 100% width for line highlighting to work properly
@@ -40,23 +40,23 @@ div[class^='highlight'] td.code
 
 .linenodiv pre
     border-right: solid 1px lighten($table-border-color, 2%)
-    margin: 0
-    padding: $base-line-height / 2 $base-line-height / 2
+    color: $text-lighter
     font-family: $code-font-family
     font-size: 12px
     line-height: 1.5
-    color: $text-lighter
+    margin: 0
+    padding: $line-height-base / 2 $line-height-base / 2
 
 div[class^='highlight'] pre
-    white-space: pre
-    margin: 0
-    padding: $base-line-height / 2 $base-line-height / 2
+    color: $text-color
+    display: block
     font-family: $code-font-family
     font-size: 12px
     line-height: 1.5
-    display: block
+    margin: 0
     overflow: auto
-    color: $text-color
+    padding: $line-height-base / 2 $line-height-base / 2
+    white-space: pre
 
 pre.literal-block
     @extend .codeblock
