@@ -1,5 +1,6 @@
-// vertical space: http://localhost:1919/list.html#a-list
-// table: http://localhost:1919/list.html#second-list-level
+// Fixme:
+//   vertical space: http://localhost:1919/list.html#a-list
+//   table: http://localhost:1919/list.html#second-list-level
 
 //**************************************************************************************************
 
@@ -355,6 +356,9 @@ section.rst-content
     //     font-size: 60%
 
     //****************************************************************
+    // Line Block / Block Quote
+
+    // indented text
 
     // For the most part, its safe to assume that sphinx wants you to use a blockquote as an indent. It gets
     // used in many different ways, so don't assume you can apply some fancy style, just leave it be.
@@ -364,20 +368,26 @@ section.rst-content
         margin-left: $line-height-base
         margin-right: 0px
 
+    // .. parsed-literal::
+    // .. code-block::
     .literal-block, pre.literal-block
         @extend .codeblock
 
+    // | foo bar
     .line-block
         margin-left: $line-height-base
 
     //****************************************************************
 
+    // Title
+    // <h1><a class="toc-backref" href="#id29">...
     .toc-backref
         color: $text-color
 
     //****************************************************************
+    // Sidebar content
+    // .. sidebar:: A code example
 
-    // Sidebar content. You'll see at the bottom of this file I change it in mobile.
     .sidebar
         float: right
         width: 40%
@@ -411,16 +421,30 @@ section.rst-content
         padding: 0 $line-height-base / 4
 
     //****************************************************************
+    // References and Citations
 
-    // These are the little citation links [1] that show up within paragraphs.
+    // <a id="id1" class="footnote-reference" href="#id2"></a>
+
     .footnote-reference, .citation-reference
         vertical-align: super
         font-size: 90%
 
-    //****************************************************************
+    // Sphinx uses table for references
+    //
+    // <div class="table-responsive">
+    //     <table id="id2" class="docutils footnote" rules="none" frame="void">
+    //         <colgroup></colgroup>
+    //         <tbody valign="top">
+    //             <tr>
+    //                 <td class="label">
+    //                     <a class="fn-backref" href="#id1"></a>
+    //                 </td>
+    //                 <td></td>
+    //             </tr>
+    //         </tbody>
+    //     </table>
+    // </div>
 
-    // Tables! Sphinx LOVES TABLES. Most of wyrm assumes you're only going to use a table as a table
-    // so I have to write a bunch of unique stuff for Sphinx to style them up differently like it's 2003.
     table.docutils.citation, table.docutils.footnote
         background: none
         border: none
@@ -434,6 +458,8 @@ section.rst-content
             padding-right: 0
             vertical-align: top
 
+    //****************************************************************
+
     table.docutils
         @extend .table
         @extend .table-bordered-all
@@ -441,6 +467,21 @@ section.rst-content
             @extend .table-striped
 
     // This table is what gets spit out for auto-generated API stuff. I style it smaller bits of padding.
+
+    // :param foo: ...
+    // ->
+    // <table class="docutils field-list" rules="none" frame="void">
+    //     <colgroup></colgroup>
+    //     <tbody valign="top">
+    //         <tr class="field-odd field">
+    //             <th class="field-name"></th>
+    //             <td class="field-body">
+    //                 <ul class="first last simple"></ul>
+    //             </td>
+    //         </tr>
+    //     </tbody>
+    // </table>
+
     table.field-list
         @extend .table
         border: none
@@ -459,26 +500,32 @@ section.rst-content
             padding-left: 0
 
     //****************************************************************
+    // Literals
 
-    // These are the "literals" that get spit out when you mark stuff as ``code`` as your write.
+    // ``code``
+    // ->
+    // <code class="docutils literal"></code>
+
+    // :class:`Foo`
+    // ->
+    // <a><code class="xref"></code></a>
+
     code
         @extend code
         color: $black
-        big, em
+        em
             font-size: 100% !important
             line-height: normal
         .xref, a &
             font-weight: bold
-
-    //****************************************************************
 
     // If the literal is inside an a tag, let's color it like a link
     a code
         color: $link-color
 
     //****************************************************************
+    // Links to source code
 
-    // Doc links to sourcecode
     .viewcode-link, .viewcode-back
         display: inline-block
         color: $green
@@ -488,21 +535,30 @@ section.rst-content
         display: block
         float: right
 
+    //****************************************************************
+
+    // .. rubric:: This is a rubric
     p.rubric
         margin-bottom: 12px
         font-weight: bold
 
     //****************************************************************
-
     // Download link
+
+    // :download:`... <...>`
+    // <a class="reference download internal" href="...">
+    //     <code class="xref download docutils literal"
+    //         <span class="pre">...</span>
+
     code.download
         background: inherit
-        padding: inherit
+        border: inherit
+        color: inherit
         font-family: inherit
         font-size: inherit
-        color: inherit
-        border: inherit
+        padding: inherit
         white-space: inherit
+
         span:first-child
             @extend .fa
             @extend .fa-download

@@ -1,24 +1,32 @@
 //**************************************************************************************************
 
-.codeblock-example
-    background: $white
-    border: 1px solid $table-border-color
-    border-bottom: none
-    font-weight: 500
-    padding: $line-height-base
-    padding-top: $line-height-base * 2
-    position: relative
-    &:after
-        background: $purple
-        color: lighten(purple, 80%)
-        content: "Example"
-        left: 0px
-        padding: $line-height-base / 4 $line-height-base / 2
-        position: absolute
-        top: 0px
-    &.prettyprint-example-only
-        border: 1px solid $table-border-color
-        margin-bottom: $line-height-base
+// ``...``
+// ->
+// <code class="docutils literal">
+
+// .. code-block:: python
+// ->
+// <div class="highlight-python">
+//     <div class="highlight">
+//         <pre>
+
+// <div class="highlight-python">
+//     <table class="highlighttable">
+
+// div[class^='highlight'] class starts with "highlight"
+
+// <div class="highlight-python">
+//     <table class="highlighttable">
+//         <tbody>
+//             <tr>
+//                 <td class="linenos">
+//                     <div class="linenodiv">
+//                         <pre></pre>
+//                     </div>
+//                 </td>
+//                 <td class="code">
+//                    <div class="highlight">
+//                        <pre>
 
 //**************************************************************************************************
 
@@ -38,6 +46,7 @@
 div[class^='highlight'] td.code
     width: 100%
 
+// Line numbers
 .linenodiv pre
     border-right: solid 1px lighten($table-border-color, 2%)
     color: $text-lighter
@@ -45,7 +54,7 @@ div[class^='highlight'] td.code
     font-size: 12px
     line-height: 1.5
     margin: 0
-    padding: $line-height-base / 2 $line-height-base / 2
+    padding: $line-height-base / 2   $line-height-base / 2
 
 div[class^='highlight'] pre
     color: $text-color
@@ -55,17 +64,14 @@ div[class^='highlight'] pre
     line-height: 1.5
     margin: 0
     overflow: auto
-    padding: $line-height-base / 2 $line-height-base / 2
+    padding: $line-height-base / 2   $line-height-base / 2
     white-space: pre
 
+// .. parsed-literal::
+// ->
+// <pre class="literal-block"></pre>
 pre.literal-block
     @extend .codeblock
-
-//**************************************************************************************************
-
-@media print
-    .codeblock, div[class^='highlight'], div[class^='highlight'] pre
-        white-space: pre-wrap
 
 //***************************************************************************************************
 //
