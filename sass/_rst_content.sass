@@ -197,6 +197,11 @@ section.rst-content
         &:hover .headerlink
             display: inline-block
 
+    // Title
+    // <h1><a class="toc-backref" href="#id29">...
+    .toc-backref
+        color: $text-color
+
     p.caption
         @extend h2
 
@@ -288,46 +293,45 @@ section.rst-content
             padding-right: 8px
 
     //****************************************************************
-    // Admonitions
 
-    // These are the various note pullouts that sphinx applies
-    .note, .attention, .caution, .danger, .error, .hint, .important, .tip, .warning, .seealso, .admonition-todo
-        @extend .alert
-        .last
-            margin-bottom: 0
+    table.docutils
+        @extend .table
+        @extend .table-bordered-all
+        &:not(.field-list)
+            @extend .table-striped
 
-    .admonition-title
-        @extend .alert-title
-        @extend .fa
-        @extend .fa-exclamation-circle
-        &:before
-            margin-right: 4px
+    // This table is what gets spit out for auto-generated API stuff. I style it smaller bits of padding.
 
-    .note, .seealso
-        @extend .alert.alert-info
+    // :param foo: ...
+    // ->
+    // <table class="docutils field-list" rules="none" frame="void">
+    //     <colgroup></colgroup>
+    //     <tbody valign="top">
+    //         <tr class="field-odd field">
+    //             <th class="field-name"></th>
+    //             <td class="field-body">
+    //                 <ul class="first last simple"></ul>
+    //             </td>
+    //         </tr>
+    //     </tbody>
+    // </table>
 
-    .hint, .tip, .important
-        @extend .alert.alert-success
-
-    .error, .danger
-        @extend .alert.alert-danger
-
-    .warning, .caution, .attention, .admonition-todo
-        @extend .alert.alert-warning
-
-    // Some people put tables in notes. Let's give them very basic support.
-    .admonition table
-        border-color: rgba(0,0,0,.1)
-        td, th
-            background: transparent !important
-            border-color: rgba(0,0,0,.1) !important
-
-    //****************************************************************
-    // Generics handling of headings and toc stuff.
-
-    .topic-title
-        font-weight: bold
-        margin-bottom: $line-height-base / 2
+    table.field-list
+        @extend .table
+        border: none
+        td
+            border: none
+            padding-top: 5px
+        td > strong
+            display: inline-block
+            margin-top: 3px
+        .field-name
+            padding-right: 10px
+            text-align: left
+            white-space: nowrap
+        .field-body
+            text-align: left
+            padding-left: 0
 
     //****************************************************************
     // Figure
@@ -378,38 +382,28 @@ section.rst-content
         margin-left: $line-height-base
 
     //****************************************************************
+    // Literals
 
-    // Title
-    // <h1><a class="toc-backref" href="#id29">...
-    .toc-backref
-        color: $text-color
+    // ``code``
+    // ->
+    // <code class="docutils literal"></code>
 
-    //****************************************************************
-    // Sidebar content
-    // .. sidebar:: A code example
+    // :class:`Foo`
+    // ->
+    // <a><code class="xref"></code></a>
 
-    .sidebar
-        float: right
-        width: 40%
-        display: block
-        margin: 0 0 $line-height-base $line-height-base
-        padding: $line-height-base
-        background: $table-stripe-color
-        border: solid 1px $table-border-color
-        // Sidebar content is usually less relevant, so adjust the margins and sizes.
-        p, ul, dl
-            font-size: 90%
-        .last
-            margin-bottom: 0
-        .sidebar-title
-            display: block
-            font-family: $font-family-custom
+    code
+        @extend code
+        color: $black
+        em
+            font-size: 100% !important
+            line-height: normal
+        .xref, a &
             font-weight: bold
-            background: $table-border-color
-            padding: $line-height-base / 4 $line-height-base / 2
-            margin: -$line-height-base
-            margin-bottom: $line-height-base
-            font-size: 100%
+
+    // If the literal is inside an a tag, let's color it like a link
+    a code
+        color: $link-color
 
     //****************************************************************
 
@@ -419,6 +413,41 @@ section.rst-content
         display: inline-block
         font-weight: bold
         padding: 0 $line-height-base / 4
+
+    //****************************************************************
+    // Admonitions
+
+    // These are the various note pullouts that sphinx applies
+    .note, .attention, .caution, .danger, .error, .hint, .important, .tip, .warning, .seealso, .admonition-todo
+        @extend .alert
+        .last
+            margin-bottom: 0
+
+    .admonition-title
+        @extend .alert-title
+        @extend .fa
+        @extend .fa-exclamation-circle
+        &:before
+            margin-right: 4px
+
+    .note, .seealso
+        @extend .alert.alert-info
+
+    .hint, .tip, .important
+        @extend .alert.alert-success
+
+    .error, .danger
+        @extend .alert.alert-danger
+
+    .warning, .caution, .attention, .admonition-todo
+        @extend .alert.alert-warning
+
+    // Some people put tables in notes. Let's give them very basic support.
+    .admonition table
+        border-color: rgba(0,0,0,.1)
+        td, th
+            background: transparent !important
+            border-color: rgba(0,0,0,.1) !important
 
     //****************************************************************
     // References and Citations
@@ -459,71 +488,6 @@ section.rst-content
             vertical-align: top
 
     //****************************************************************
-
-    table.docutils
-        @extend .table
-        @extend .table-bordered-all
-        &:not(.field-list)
-            @extend .table-striped
-
-    // This table is what gets spit out for auto-generated API stuff. I style it smaller bits of padding.
-
-    // :param foo: ...
-    // ->
-    // <table class="docutils field-list" rules="none" frame="void">
-    //     <colgroup></colgroup>
-    //     <tbody valign="top">
-    //         <tr class="field-odd field">
-    //             <th class="field-name"></th>
-    //             <td class="field-body">
-    //                 <ul class="first last simple"></ul>
-    //             </td>
-    //         </tr>
-    //     </tbody>
-    // </table>
-
-    table.field-list
-        @extend .table
-        border: none
-        td
-            border: none
-            padding-top: 5px
-        td > strong
-            display: inline-block
-            margin-top: 3px
-        .field-name
-            padding-right: 10px
-            text-align: left
-            white-space: nowrap
-        .field-body
-            text-align: left
-            padding-left: 0
-
-    //****************************************************************
-    // Literals
-
-    // ``code``
-    // ->
-    // <code class="docutils literal"></code>
-
-    // :class:`Foo`
-    // ->
-    // <a><code class="xref"></code></a>
-
-    code
-        @extend code
-        color: $black
-        em
-            font-size: 100% !important
-            line-height: normal
-        .xref, a &
-            font-weight: bold
-
-    // If the literal is inside an a tag, let's color it like a link
-    a code
-        color: $link-color
-
-    //****************************************************************
     // Links to source code
 
     .viewcode-link, .viewcode-back
@@ -534,13 +498,6 @@ section.rst-content
     .viewcode-back
         display: block
         float: right
-
-    //****************************************************************
-
-    // .. rubric:: This is a rubric
-    p.rubric
-        margin-bottom: 12px
-        font-weight: bold
 
     //****************************************************************
     // Download link
@@ -564,6 +521,45 @@ section.rst-content
             @extend .fa-download
             &:before
                 margin-right: 4px
+
+    //****************************************************************
+    // Generics handling of headings and toc stuff.
+
+    .topic-title
+        font-weight: bold
+        margin-bottom: $line-height-base / 2
+
+    // .. rubric:: This is a rubric
+    p.rubric
+        margin-bottom: 12px
+        font-weight: bold
+
+    //****************************************************************
+    // Sidebar content
+    // .. sidebar:: A code example
+
+    .sidebar
+        float: right
+        width: 40%
+        display: block
+        margin: 0 0 $line-height-base $line-height-base
+        padding: $line-height-base
+        background: $table-stripe-color
+        border: solid 1px $table-border-color
+        // Sidebar content is usually less relevant, so adjust the margins and sizes.
+        p, ul, dl
+            font-size: 90%
+        .last
+            margin-bottom: 0
+        .sidebar-title
+            display: block
+            font-family: $font-family-custom
+            font-weight: bold
+            background: $table-border-color
+            padding: $line-height-base / 4 $line-height-base / 2
+            margin: -$line-height-base
+            margin-bottom: $line-height-base
+            font-size: 100%
 
 //***************************************************************************************************
 //
