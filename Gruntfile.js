@@ -7,7 +7,7 @@ module.exports = function(grunt) {
     
     clean: {
       build: ["demo_docs/build"],
-      fonts: ["sphinx_theme/static/fonts"]
+      fonts: ["sphinx_sass_theme/static/fonts"]
     },
     
     // https://github.com/Modernizr/grunt-modernizr
@@ -18,7 +18,7 @@ module.exports = function(grunt) {
 	devFile: 'bower_components/modernizr/modernizr.js',
 	
 	// Path to save out the built file.
-	outputFile: 'sphinx_theme/static/js/modernizr.js',
+	outputFile: 'sphinx_sass_theme/static/js/modernizr.js',
 	
         // Based on default settings on http://modernizr.com/download/
         "extra" : {
@@ -57,8 +57,8 @@ module.exports = function(grunt) {
         // You can override this by defining a "files" array below.
 	"files" : {
           "src": [
-	    'sphinx_theme/static/css/*.css',
-	    'sphinx_theme/static/js/*.css'
+	    'sphinx_sass_theme/static/css/*.css',
+	    'sphinx_sass_theme/static/js/*.css'
 	  ]
         },
 	
@@ -81,7 +81,7 @@ module.exports = function(grunt) {
 	  expand: true,
 	  flatten: true,
 	  src: ['bower_components/font-awesome/fonts/*'],
-	  dest: 'sphinx_theme/static/fonts/',
+	  dest: 'sphinx_sass_theme/static/fonts/',
 	  filter: 'isFile'
 	}]
       }
@@ -102,7 +102,7 @@ module.exports = function(grunt) {
           expand: true,
           cwd: 'sass',
           src: ['*.sass'],
-          dest: 'sphinx_theme/static/css',
+          dest: 'sphinx_sass_theme/static/css',
           ext: '.css'
         }]
       },
@@ -120,7 +120,7 @@ module.exports = function(grunt) {
           expand: true,
           cwd: 'sass',
           src: ['*.sass'],
-          dest: 'sphinx_theme/static/css',
+          dest: 'sphinx_sass_theme/static/css',
           ext: '.css'
         }]
       }
@@ -159,7 +159,7 @@ module.exports = function(grunt) {
       },
       // Changes in theme dir rebuild sphinx
       sphinx: {
-        files: ['sphinx_theme/**/*', 'demo_docs/**/*.rst', 'demo_docs/**/*.py'],
+        files: ['sphinx_sass_theme/**/*', 'demo_docs/**/*.rst', 'demo_docs/**/*.py'],
         tasks: ['clean:build', 'exec:build_sphinx']
       },
       // live-reload the demo_docs if sphinx re-builds

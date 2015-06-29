@@ -1,16 +1,16 @@
 {
-  "name": "sphinx_fabrice_theme",
+  "name": "sphinx_sass_theme",
   "version": "0.1.0",
-  "homepage": "https://github.com/FabriceSalvaire/...",
+  "homepage": "https://github.com/FabriceSalvaire/sphinx-sass-theme",
   "authors": [
     "Fabrice Salvaire <fabrice.salvaire@orange.fr>"
   ],
-  "description": "My theme",
+  "description": "SASS theme for Sphinx",
   "main": [
     "dist/**"
   ],
   "keywords": [
-    "sphinx", "theme"
+    "sphinx", "theme", "Sass"
   ],
   "license": "GPL V3",
   "ignore": [
@@ -24,6 +24,5 @@
     "bourbon": "~4.0.2",
     "font-awesome": "~4.2.0",
     "modernizr": "~2.8.3",
-    "neat": "~1.6.0",
   }
 }

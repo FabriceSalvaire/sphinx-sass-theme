@@ -1,5 +1,4 @@
-"""Sphinx heme.
-"""
+""" SASS theme for Sphinx. """
 
 import os
 
