@@ -10,7 +10,7 @@
     "dist/**"
   ],
   "keywords": [
-    "sphinx", "theme", "Sass"
+    "sphinx", "theme", "sass"
   ],
   "license": "GPL V3",
   "ignore": [
