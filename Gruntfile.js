@@ -1,25 +1,25 @@
 module.exports = function(grunt) {
-  
+
   // load all grunt tasks
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
-  
+
   grunt.initConfig({
-    
+
     clean: {
       build: ["demo_docs/build"],
       fonts: ["sphinx_sass_theme/static/fonts"]
     },
-    
+
     // https://github.com/Modernizr/grunt-modernizr
     // npm install grunt-modernizr --save-dev
     modernizr: {
       dist: {
 	// [REQUIRED] Path to the build you're using for development.
-	devFile: 'bower_components/modernizr/modernizr.js',
-	
+	devFile: 'bower_components/modernizr/dist/modernizr-build.js',
+
 	// Path to save out the built file.
 	outputFile: 'sphinx_sass_theme/static/js/modernizr.js',
-	
+
         // Based on default settings on http://modernizr.com/download/
         "extra" : {
           "shiv" : true,
@@ -28,7 +28,7 @@ module.exports = function(grunt) {
           "mq" : false,
           "cssclasses" : true
         },
-	
+
         // Based on default settings on http://modernizr.com/download/
         "extensibility" : {
           "addtest" : false,
@@ -41,17 +41,17 @@ module.exports = function(grunt) {
           "domprefixes" : false,
           "cssclassprefix": ""
         },
-	
+
         // By default, source is uglified before saving
         "uglify" : true,
-	
+
         // Define any tests you want to implicitly include.
         "tests" : [],
-	
+
         // By default, this task will crawl your project for references to Modernizr tests.
         // Set to false to disable.
         "parseFiles" : true,
-	
+
         // When parseFiles = true, this task will crawl all *.js, *.css, *.scss and *.sass files,
         // except files that are in node_modules/.
         // You can override this by defining a "files" array below.
@@ -61,20 +61,20 @@ module.exports = function(grunt) {
 	    'sphinx_sass_theme/static/js/*.css'
 	  ]
         },
-	
+
         // This handler will be passed an array of all the test names
         // passed to the Modernizr API, and will run after the API
         // call has returned
         // "handler": function (tests) {},
-	
+
         // When parseFiles = true, matchCommunityTests = true will attempt to match user-contributed tests.
         "matchCommunityTests" : false,
-	
+
         // Have custom Modernizr tests? Add paths to their location here.
         "customTests" : []
       }
     },
-    
+
     copy: {
       fonts: {
         files: [{ // includes files within path
@@ -86,14 +86,15 @@ module.exports = function(grunt) {
 	}]
       }
     },
-    
+
     sass: {
       dev: {
         options: {
           style: 'expanded',
-          loadPath: [
-	    'bower_components/bourbon/dist',
-	    'bower_components/neat/app/assets/stylesheets',
+            loadPath: [
+    	    'bower_components/bourbon/app/assets/stylesheets',
+	    // 'bower_components/bourbon/dist',
+	    // 'bower_components/neat/app/assets/stylesheets',
 	    'bower_components/font-awesome/scss',
 	    // 'bower_components/wyrm/sass'
 	  ]
@@ -125,7 +126,7 @@ module.exports = function(grunt) {
         }]
       }
     },
-    
+
     exec: {
       bower_update: {
         cmd: 'bower update'
@@ -134,7 +135,7 @@ module.exports = function(grunt) {
         cmd: 'sphinx-build demo_docs/source demo_docs/build'
       }
     },
-    
+
     connect: {
       server: {
         options: {
@@ -144,13 +145,13 @@ module.exports = function(grunt) {
         }
       }
     },
-    
+
     open : {
       dev: {
         path: 'http://localhost:1919'
       }
     },
-    
+
     watch: {
       // Compile sass changes into theme directory
       sass: {
@@ -168,9 +169,9 @@ module.exports = function(grunt) {
         options: { livereload: true }
       }
     }
-    
+
   });
-  
+
   grunt.loadNpmTasks('grunt-exec');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-watch');
@@ -179,12 +180,12 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-open');
   grunt.loadNpmTasks("grunt-modernizr");
-  
+
   grunt.registerTask('fonts', [
     'clean:fonts',
     'copy:fonts'
   ]);
-  
+
   grunt.registerTask('default', [
     // 'exec:bower_update',
     'clean:build',
@@ -195,9 +196,9 @@ module.exports = function(grunt) {
     'open',
     'watch'
   ]);
-  
+
   grunt.registerTask('build', [
-    'exec:bower_update',
+    // 'exec:bower_update',
     'clean:build',
     'modernizr',
     'sass:build',

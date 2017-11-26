@@ -1,4 +1,5 @@
 #! /bin/bash
+
 wget https://raw.githubusercontent.com/necolas/normalize.css/master/normalize.css
 sass-convert --to sass --indent 4 normalize.css > normalize-converted.sass
 
